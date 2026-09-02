@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Payment Report</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="module" src="https://static.rainforestpay.com/sandbox.merchant.js"></script>
+</head>
+<body class="center-page">
+  <div class="card card--wide">
+    <div id="banner" class="banner"></div>
+
+    <div class="tabs-bar">
+      <div class="tabs" role="tablist">
+        <button class="tab active" id="tab-payment" role="tab" aria-selected="true" aria-controls="panel-payment">Payment Report</button>
+        <button class="tab" id="tab-deposit" role="tab" aria-selected="false" aria-controls="panel-deposit">Deposit Report</button>
+      </div>
+      <button id="deposit-btn">Deposit</button>
+    </div>
+
+    <div id="panel-payment" class="tab-panel" role="tabpanel" aria-labelledby="tab-payment">
+      <div id="report-mount"><p class="muted">Loading report…</p></div>
+    </div>
+
+    <div id="panel-deposit" class="tab-panel" role="tabpanel" aria-labelledby="tab-deposit" hidden>
+      <div id="deposit-mount"><p class="muted">Loading report…</p></div>
+    </div>
+
+    <p class="hint"><a href="/">← Customer view</a></p>
+  </div>
+
+  <script src="/js/report.js"></script>
+</body>
+</html>

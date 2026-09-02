@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dim Sum Menu</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="menu-page">
+    <div class="menu-header">
+      <div class="menu-header-text">
+        <h1>Dim Sum Menu</h1>
+        <p class="restaurant-name">Victoria's Restaurant</p>
+      </div>
+      <a class="merchant-link" href="/report.html">Merchant Login</a>
+    </div>
+
+    <div id="menu-list" class="menu-grid"></div>
+
+    
+  </div>
+
+  <div class="cart-bar">
+    <div class="cart-bar-inner">
+      <div class="cart-summary">
+        <span id="cart-count" class="muted">Your cart is empty</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <div class="checkout-row">
+        <input id="customer-name" type="text" placeholder="Full Name" />
+        <button id="checkout-btn" disabled>Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/index.js"></script>
+</body>
+</html>

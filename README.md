@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥟 Victoria's Restaurant — Dim Sum Ordering Demo
 
-## Getting Started
+A small dim sum ordering site built to showcase [Rainforest Payments](https://rainforestpay.com) embedded components — checkout, receipts, and merchant reporting — wired up end to end in a real Node/Express app.
 
-First, run the development server:
+Order dumplings, pay through an embedded card form, get a receipt, then flip over to the merchant side to watch the payment and deposit reports update live.
+
+## ✨ What's inside
+
+| Page | Route | What it shows |
+|---|---|---|
+| Menu | `/index.html` | Browse the dim sum menu, add items to a cart, check out |
+| Checkout | `/checkout.html` | Embedded Rainforest **payment component** collects card details and pays |
+| Receipt | `/receipt.html` | Embedded Rainforest **receipt component** for the completed order |
+| Merchant Report | `/report.html` | Embedded **payment report** + **deposit report** components, with a "simulate deposit" action |
+
+The Express server (`server.js`) never talks to Rainforest directly from the browser — it brokers short-lived, scoped **session keys** through `/api/*` routes (`src/routes/api.js`), and each page mounts the matching Rainforest web component with that key.
+
+## 🧰 Tech stack
+
+- **Node.js** + **Express** — static file serving and a thin API layer
+- Plain **HTML/CSS/JS** on the frontend (`public/`) — no framework, no build step
+- [Rainforest Payments](https://rainforestpay.com) sandbox components (`sandbox.payment.js`, `sandbox.merchant.js`) loaded straight from Rainforest's CDN
+
+## 🚀 Getting started
+
+### 1. Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env` file in the project root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+RAINFOREST_API_KEY=your_sandbox_api_key
+RAINFOREST_MERCHANT_ID=your_merchant_id
+RAINFOREST_BASE_URL=https://api.sandbox.rainforestpay.com
+```
 
-## Learn More
+### 3. Run it
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start       # node server.js
+# or
+npm run dev      # node --watch server.js, restarts on change
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then open **http://localhost:3000** 🎉
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗂️ Project layout
 
-## Deploy on Vercel
+```
+server.js                  # Express app entrypoint
+src/
+  rainforestClient.js       # Thin fetch wrapper around the Rainforest API
+  routes/api.js              # Routes that mint payin configs & session keys
+public/
+  index.html                 # Menu / cart
+  checkout.html               # Embedded payment component
+  receipt.html                 # Embedded receipt component
+  report.html                   # Embedded merchant report components
+  css/style.css                  # Shared styling
+  js/                              # Per-page frontend logic
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔐 A note on security
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Session keys are scoped (e.g. `group#payment_component`, constrained to a specific `payin_id` or `merchant_id`) and short-lived (1 hour TTL). The Rainforest API key itself never leaves the server — only these narrow session keys are handed to the browser. This is a sandbox/demo integration and isn't meant for production use as-is.

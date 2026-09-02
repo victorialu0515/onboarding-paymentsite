@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="module" src="https://static.rainforestpay.com/sandbox.payment.js"></script>
+</head>
+<body class="center-page">
+  <div class="card">
+    <h1>Checkout: $<span id="amount-label">…</span></h1>
+    <div id="customer-name-container" class="customer-name-container">
+      <span id="customer-name-label">…</span>
+    </div>
+    <div id="banner" class="banner"></div>
+    <div id="payment-mount"><p class="muted">Setting up payment</p></div>
+  </div>
+
+  <script src="/js/checkout.js"></script>
+</body>
+</html>
