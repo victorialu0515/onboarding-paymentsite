@@ -75,9 +75,9 @@ The app needs a Rainforest sandbox API key on the server, so someone without a s
 
 To show the demo to someone without an account, share the screenshots below or a screen recording of the flow.
 
-| Menu | Checkout |
-|---|---|
-| ![Dim sum menu with cart](docs/screenshots/menu.png) | ![Embedded Rainforest payment component](docs/screenshots/checkout.png) |
+| Menu | Checkout | Receipt |
+|---|---|---|
+| ![Dim sum menu with cart](docs/screenshots/menu.png) | ![Embedded Rainforest payment component](docs/screenshots/checkout.png) | ![Embedded Rainforest receipt component](docs/screenshots/receipt.png) |
 
 ## 🗂️ Project layout
 
