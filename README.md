@@ -79,6 +79,10 @@ To show the demo to someone without an account, share the screenshots below or a
 |---|---|---|
 | ![Dim sum menu with cart](docs/screenshots/menu.png) | ![Embedded Rainforest payment component](docs/screenshots/checkout.png) | ![Embedded Rainforest receipt component](docs/screenshots/receipt.png) |
 
+**Merchant report** (all sandbox test data)
+
+![Embedded Rainforest payment report component](docs/screenshots/merchant-report.png)
+
 ## 🗂️ Project layout
 
 ```
