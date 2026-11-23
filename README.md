@@ -29,7 +29,18 @@ The Express server (`server.js`) never talks to Rainforest directly from the bro
 npm install
 ```
 
-### 2. Configure environment
+### 2. Get sandbox credentials
+
+You need a **Rainforest sandbox account**. Rainforest sets these up for platforms; there's no public self-serve signup, so if you don't have one, this app won't run for you (see [Trying it without credentials](#-trying-it-without-credentials)).
+
+With an account, sign in to the sandbox Platform Portal at **https://platform.sandbox.rainforestpay.com** and collect:
+
+- **API key** → open the **API keys** page and create a key. Sandbox keys start with `sbx_apikey_`. Copy it straight into `.env`; don't paste it into chat, tickets, or code.
+- **Merchant ID** → pick the sandbox merchant you want orders charged to and copy its ID from the **Merchants** page. (Once a test payment exists, it also shows in the **Merchant ID** column of the Payments report.)
+
+Sandbox payments move no real money. Use Rainforest's [test cards](https://docs.rainforestpay.com/docs/test-accounts-and-cards) at checkout.
+
+### 3. Configure environment
 
 Create a `.env` file in the project root (it's gitignored — never commit it):
 
@@ -46,7 +57,7 @@ RAINFOREST_BASE_URL=https://api.sandbox.rainforestpay.com
 | `RAINFOREST_BASE_URL` | yes | Keep this on the **sandbox** API — the pages load Rainforest's sandbox components. |
 | `PORT` | no | Defaults to `3000`. |
 
-### 3. Run it
+### 4. Run it
 
 Requires Node.js 18+ (the server uses the built-in `fetch`).
 
@@ -57,6 +68,20 @@ npm run dev      # node --watch server.js, restarts on change
 ```
 
 Then open **http://localhost:3000** 🎉
+
+## 👀 Trying it without credentials
+
+The app needs a Rainforest sandbox API key on the server, so someone without a sandbox account can't run it locally. Don't share your API key to get around this: unless you restrict it, an API key can act on your whole sandbox platform, not just this demo merchant.
+
+To show the demo to someone without an account, share the screenshots below or a screen recording of the flow.
+
+| Menu | Checkout | Receipt |
+|---|---|---|
+| ![Dim sum menu with cart](docs/screenshots/menu.png) | ![Embedded Rainforest payment component](docs/screenshots/checkout.png) | ![Embedded Rainforest receipt component](docs/screenshots/receipt.png) |
+
+**Merchant report** (all sandbox test data)
+
+![Embedded Rainforest payment report component](docs/screenshots/merchant-report.png)
 
 ## 🗂️ Project layout
 
