@@ -73,7 +73,11 @@ Then open **http://localhost:3000** 🎉
 
 The app needs a Rainforest sandbox API key on the server, so someone without a sandbox account can't run it locally. Don't share your API key to get around this: unless you restrict it, an API key can act on your whole sandbox platform, not just this demo merchant.
 
-To show the demo to someone without an account, share a screen recording or screenshots of the flow (menu → checkout → receipt → merchant report) instead.
+To show the demo to someone without an account, share the screenshots below or a screen recording of the flow.
+
+| Menu | Checkout |
+|---|---|
+| ![Dim sum menu with cart](docs/screenshots/menu.png) | ![Embedded Rainforest payment component](docs/screenshots/checkout.png) |
 
 ## 🗂️ Project layout
 
